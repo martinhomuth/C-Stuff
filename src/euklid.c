@@ -1,8 +1,8 @@
 #include <stdio.h>
 
-long gcd(long u, long v)
+int gcd(int u, int v)
 {
-	long t;
+	int t;
 	while (u > 0) {
 		if (u < v) {
 			t = u;
@@ -14,9 +14,9 @@ long gcd(long u, long v)
 	return v;
 }
 
-long gcd_ptr(long *u, long *v)
+int gcd_ptr(int *u, int *v)
 {
-	long *t;
+	int *t;
 	while (*u > 0) {
 		if (*u < *v) {
 			t = u;

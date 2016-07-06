@@ -8,7 +8,7 @@
  * @param v The second digit
  * @return The greatest common denominator
  */
-long gcd(long u, long v);
+int gcd(int u, int v);
 
 /**
  * @brief Finds the greatest common denominator using euclids
@@ -18,6 +18,6 @@ long gcd(long u, long v);
  * @param v Pointer to the second digit
  * @return The greatest common denominator
  */
-long gcd_ptr(long *u, long *v);
+int gcd_ptr(int *u, int *v);
 
 #endif /* EUKLID_H__ */
