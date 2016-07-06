@@ -8,11 +8,14 @@ LDLIBS = -lX11
 # use the newest standard by default
 CC=gcc -std=c11
 
-all: $(BINDIR)/$(P)
+all: $(BINDIR)/$(P) $(BINDIR)/gcd
 
 $(BINDIR)/$(P): $(P_OBJECTS)
 	$(CC) $(CFLAGS) $(LDFLAGS) $< -o $@ $(LDLIBS)
 
+$(BINDIR)/gcd: euklid_test.o euklid.o
+	$(CC) $(CFLAGS) $(LDFLAGS) $^ -o $@ $(LDLIBS)
+
 clean:
-	$(Q)$(RM) $(BINDIR)/$(P)
+	$(Q)$(RM) $(BINDIR)/*
 	$(Q)$(RM) *.o
