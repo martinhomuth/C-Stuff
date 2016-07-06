@@ -8,12 +8,28 @@
 #include <X11/Xos.h>
 #include <X11/Xatom.h>
 
+void print_display_information(Display *dpy)
+{
+	int connectionNumber = XConnectionNumber(dpy);
+	printf("The connection number is %d\n", connectionNumber);
+	int defaultDepth = XDefaultDepth(dpy, DefaultScreen(dpy));
+	printf("The default depth is %d\n", defaultDepth);
+	printf("There are %d screens\n", XScreenCount(dpy));
+	printf("%s is the screen vendor\n", XServerVendor(dpy));
+
+	Screen *screen = XDefaultScreenOfDisplay(dpy);
+	printf("This screen has 0x%lx as black pixel and 0x%lx as white pixel\n",
+	       XBlackPixelOfScreen(screen), XWhitePixelOfScreen(screen));
+}
+
 int main()
 {
 
 	/* connect to the X server */
 	Display *dpy = XOpenDisplay(NULL);
 	assert(dpy);
+
+	print_display_information(dpy);
 
 	int screen = DefaultScreen(dpy);
 
