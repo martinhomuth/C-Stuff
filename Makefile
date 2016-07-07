@@ -11,5 +11,6 @@ program:
 
 clean:
 	$(Q)$(MAKE) -C src clean
+	$(Q)rm doc/html doc/latex -rf
 
-.PHONY: doc
+.PHONY: doc clean

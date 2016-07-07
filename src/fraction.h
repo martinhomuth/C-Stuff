@@ -1,9 +1,12 @@
 #ifndef FRACTION_H__
 #define FRACTION_H__
 
+/**
+ * Representation of a fraction.
+ */
 struct fraction {
-	int numerator;
-	int denominator;
+	int numerator;   /**< numerator of a fraction */
+	int denominator; /**< denominator of a faction */
 };
 
 /**
