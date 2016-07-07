@@ -55,8 +55,8 @@ int main()
 					 80, 50, 1, blackColor, whiteColor);
 
 
-	int x, y, width, height;
-	Window root_window;
+	int /*x, y,*/ width, height;
+	/*	Window root_window; */
 	Colormap colormap;
 	XColor button_color;
 	XColor lightgray_color, darkgray_color;
