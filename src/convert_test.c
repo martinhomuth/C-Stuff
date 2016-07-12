@@ -4,6 +4,8 @@
 
 int main()
 {
-	printf("The number is %d\n", convert());
+	int digit = convert();
+	printf("The number is %d\n", digit);
+	binary(digit);
 	return 0;
 }

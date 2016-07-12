@@ -4,7 +4,7 @@ P = cstuff						# the application
 P_OBJECTS = menu.o					# how the application is built
 BINDIR = ../bin
 CFLAGS = -Wall -pedantic -Werror -g
-LDLIBS = -lX11
+LDLIBS = -lX11 -lm
 # use the newest standard by default
 CC=gcc -std=c11
 

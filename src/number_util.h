@@ -7,5 +7,10 @@
  */
 int convert(void);
 
+/**
+ * Prints the binary representation of a given number.
+ */
+void binary(int);
+
 
 #endif
