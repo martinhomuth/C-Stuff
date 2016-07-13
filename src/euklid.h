@@ -12,6 +12,16 @@ int gcd(int u, int v);
 
 /**
  * @brief Finds the greatest common denominator using euclids
+ * algorithm and prints every value of u and v.
+ *
+ * @param u The first digit
+ * @param v The second digit
+ * @return The greatest common denominator
+ */
+int gcd_info(int u, int v);
+
+/**
+ * @brief Finds the greatest common denominator using euclids
  * algorithm and pointers.
  *
  * @param u Pointer to the first digit

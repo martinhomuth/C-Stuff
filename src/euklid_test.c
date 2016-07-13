@@ -17,12 +17,21 @@ int main()
 		end = ts.tv_nsec;
 		printf("took %d nanoseconds\n", end-start);
 
+		int xp = x;
+		int yp = y;
 		timespec_get(&ts, TIME_UTC);
 		start = ts.tv_nsec;
-		printf("The greatest common denominator (ptr) is %d\n", gcd_ptr(&x, &y));
+		printf("The greatest common denominator (ptr) is %d\n", gcd_ptr(&xp, &yp));
+		timespec_get(&ts, TIME_UTC);
+		end = ts.tv_nsec;
+		printf("took %d nanoseconds\n", end-start);
+
+		timespec_get(&ts, TIME_UTC);
+		start = ts.tv_nsec;
+		printf("The greatest common denominator (info) is %d\n", gcd_info(x, y));
 		timespec_get(&ts, TIME_UTC);
 		end = ts.tv_nsec;
 		printf("took %d nanoseconds\n", end-start);
 	}
-	
+
 }
