@@ -12,10 +12,8 @@ int main(void)
 	long readlong = 0L;
 	void *bitmap = bitvector_new(LENGTH);
 
-	while(scanf("%ld", &readlong) != EOF) {
-		printf("setting %ld\n", readlong);
+	while(scanf("%ld", &readlong) != EOF)
 		bitvector_set(bitmap, readlong);
-	}
 
 	for (long i = 0; i < LENGTH; i++)
 		if (bitvector_test(bitmap, i))
