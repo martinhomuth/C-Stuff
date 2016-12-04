@@ -26,16 +26,18 @@ void bitvector_delete(void *vec)
 
 void bitvector_set(void *vec, long index)
 {
-	*(int *)vec |= 1 << index;
+	int offset = index / 8;
+	((char *)vec)[offset] |= 1 << (index % 8);
 }
 
 void bitvector_unset(void *vec, long index)
 {
-	*(int *)vec = *(int *)vec & ~(1 << index);
+	int offset = index / 8;
+	((char *)vec)[offset] &= ~(1 << (index % 8));
 }
 
 int bitvector_test(void *vec, long index)
 {
-	return ((int *)vec)[index / 8] & (1 << (index & MASK));
+	return ((char *)vec)[index / 8] & (1 << (index & MASK));
 }
 
