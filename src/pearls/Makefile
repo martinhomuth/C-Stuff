@@ -12,6 +12,8 @@ all: $(BINDIR)/0102_bitvector_test \
 $(BINDIR)/0102_bitvector_test: bitvector_test.o bitvectors.o
 	$(CC) $(CFLAGS) $(LDFLAGS) $^ -o $@ $(LDLIBS)
 
+$(BINDIR)/0202_bitmap_sort: bitmap_sort.o bitvectors.o
+	$(CC) $(CFLAGS) $(LDFLAGS) $^ -o $@ $(LDLIBS)
 
 clean:
 	$(Q)$(RM) $(BINDIR)/*
