@@ -6,6 +6,7 @@
 
 #define TMPFILE "/tmp/peterfile"
 #define SIGSIZE 64
+#define MAXWORD 128
 
 char *signature, *word_signature;
 
@@ -53,7 +54,7 @@ int main(int argc, char *argv[])
 	if (get_signature(word, &word_signature))
 		fprintf(stderr, "unable to retrieve signature for %s\n", word);
 
-	fprintf(stdout, "Signature of %s is %s\n", word, word_signature);
+	printf("%s has the following anagrams in the dictionary:\n", word);
 
 	FILE *dictionary = fopen(argv[2], "r");
 	if (!dictionary) {
@@ -62,11 +63,17 @@ int main(int argc, char *argv[])
 		return EXIT_FAILURE;
 	}
 
-	FILE *tmpfile = fopen(TMPFILE, "w");
-	if (!tmpfile) {
-		fprintf(stderr, "Unable to open %s\n", TMPFILE);
-		return EXIT_FAILURE;
-	}
+	char buf[MAXWORD];
+	while (fscanf(dictionary, "%s ", buf) != EOF) {
+		if (get_signature(buf, &signature))
+			fprintf(stderr, "unable to retrieve signature for %s\n", word);
 
+		if (!strcmp(signature, word_signature))
+			printf(" %s", buf);
+	}
+	printf("\n");
+
+	free(signature);
+	free(word_signature);
 	return 0;
 }
