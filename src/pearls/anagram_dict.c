@@ -18,6 +18,8 @@ int usage(char *progname)
 int get_signature(char *word, char **signature)
 {
 	int signature_array[26] = {0};
+	char *ptr = *signature;
+
 	if (strlen(word) > SIGSIZE)
 		return 1;
 
@@ -28,10 +30,10 @@ int get_signature(char *word, char **signature)
 
 	for (int i = 0; i < 26; i++)
 		if (signature_array[i]) {
-			*(*signature)++ = 'a'+i;
-			*(*signature)++ = '0'+signature_array[i];
+			*ptr++ = 'a'+i;
+			*ptr++ = '0'+signature_array[i];
 		}
-
+	*ptr = '\0';
 	return 0;
 }
 
