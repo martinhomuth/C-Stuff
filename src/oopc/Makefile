@@ -11,7 +11,7 @@ OBJS = $(addprefix $(BINDIR)/, $(PROGS))
 
 all: $(OBJS)
 
-$(BINDIR)/SetTest: SetTest.o
+$(BINDIR)/SetTest: SetTest.o Set.o
 	$(CC) $(CFLAGS) $(LDFLAGS) $^ -o $@ $(LDLIBS)
 
 $(BINDIR)/Bag:
