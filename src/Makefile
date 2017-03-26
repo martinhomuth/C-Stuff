@@ -8,12 +8,15 @@ LDLIBS = -lX11 -lm
 # use the newest standard by default
 CC=gcc -std=c11
 
-.PHONY: pearls
+.PHONY: pearls oopc
 
-all: $(BINDIR)/$(P) $(BINDIR)/gcd $(BINDIR)/fraction $(BINDIR)/convert pearls
+all: $(BINDIR)/$(P) $(BINDIR)/gcd $(BINDIR)/fraction $(BINDIR)/convert pearls oopc
 
 pearls:
 	$(Q)$(MAKE) -C pearls
+
+oopc:
+	$(Q)$(MAKE) -C oopc
 
 $(BINDIR)/$(P): $(P_OBJECTS)
 	$(CC) $(CFLAGS) $(LDFLAGS) $< -o $@ $(LDLIBS)
