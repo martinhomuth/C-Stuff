@@ -5,17 +5,17 @@ CFLAGS = -Wall -pedantic -Werror -g
 LDLIBS =
 CC = gcc -std=c11
 
-PROGS = set \
-	bag
+PROGS = Set \
+	Bag
 
 OBJS = $(addprefix $(BINDIR)/, $(PROGS))
 
 all: $(OBJS)
 
-$(BINDIR)/set: set.o
+$(BINDIR)/Set: Set.o
 	$(CC) $(CFLAGS) $(LDFLAGS) $^ -o $@ $(LDLIBS)
 
-$(BINDIR)/bag:
+$(BINDIR)/Bag:
 
 clean:
 	$(Q)$(RM) $(BINDIR)/*
