@@ -2,7 +2,7 @@
 #define _SET_H
 
 /**
- * A set is represented in its objects. Each element points to the set.
+ * A set is represented in its objects. Each object points to the set.
  */
 extern const void *Set;
 
