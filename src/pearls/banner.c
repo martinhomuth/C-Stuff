@@ -5,36 +5,65 @@
 #include <stdio.h>
 #include <ctype.h>
 #include <stdlib.h>
+#include <string.h>
 
 static char capital_letter;
 
-static char letter_array[26][8][8] = {
-	{
-		"   *   ",
-		"  ***  ",
-		" ** ** ",
-		" ** ** ",
-		"*******",
-		"**   **",
-		"**   **",
-		"**   **",
+static char* letter_array[][26] = {
+	/* A */
+	{       /* lines blanks/Xs */
+		"2L6X",
+		"2L2X2B2X",
+		"2L6X",
+		"4L2X2B2X",
+		"",
 	},
+	/* B */
 	{
-		"****** ",
-		"**   **",
-		"**   **",
-		"****** ",
-		"****** ",
-		"**   **",
-		"**   **",
-		"****** ",
+		"2L6X",
+		"1L2X2B2X",
+		"2L6X",
+		"1L2X2B2X",
+		"2L6X",
+		"",
 	},
 };
 
-void print_letter(char array[8][8])
+void print_letter_line(const char *line)
 {
-	for (int i = 0; i < 8; i++) {
-		printf("%s\n", array[i]);
+	int lines;
+	const char *ptr;
+	char current;
+	int num_current;
+	sscanf(line, "%dL", &lines);
+	for (int i = 0; i < lines; i++) { /* can we make this more
+					     efficient? */
+		ptr = line+2;
+		while (ptr && strcmp(ptr, "")) {
+			sscanf(ptr++, "%d", &num_current); /* this
+							      might
+							      suck */
+			sscanf(ptr++, "%c", &current);
+			for (int j = 0; j < num_current; j++) {
+				if (current == 'B')
+					printf(" ");
+				else
+					printf("X");
+			}
+
+		}
+		printf("\n");
+	}
+}
+
+void print_letter(const char letter)
+{
+	int i = 0;
+	char *ptr;
+	while (strcmp(letter_array[letter - 'A'][i], "")) {
+		ptr = letter_array[letter - 'A'][i];
+		print_letter_line(ptr);
+		i++;
 	}
 }
 
@@ -63,6 +92,5 @@ int main(int argc, char *argv[])
 			fprintf(stderr, "invalid input\n");
 	}
 
-	print_letter(letter_array[capital_letter - 'A']);
-	print_letter(letter_array['B' - 'A']);
+	print_letter(capital_letter);
 }
